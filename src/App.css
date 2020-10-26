@@ -25,8 +25,6 @@
   background: rgba(8, 162, 173, 0.705);
   box-shadow: 1px 1px 5px rgb(80, 80, 80);
   border: none;
-  /* height: 2rem;
-  width: 5rem; */
   transition: 300ms;
   color: white;
   font-size: 1.5em;
@@ -49,6 +47,9 @@
 }
 .shuffle:hover {
   filter: brightness(120%);
+}
+.shuffle:focus {
+  outline: none;
 }
 
 span {

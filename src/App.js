@@ -1,5 +1,6 @@
 import "./App.css";
 import { React, Component } from "react";
+import bell from "../src/dinner-bell-triangle.mp3";
 
 class App extends Component {
   state = {
@@ -14,11 +15,17 @@ class App extends Component {
     ],
     currentlyServed: "",
   };
+  audioEl = {};
+
+  componentDidMount() {
+    this.audioEl = document.getElementById("audio");
+  }
 
   getRandom() {
     let num = Math.floor(Math.random() * this.state.families.length);
     let newState = this.state.families;
     const currentlyServed = newState.splice(num, 1);
+    this.audioEl.play();
     return this.setState({
       families: newState,
       currentlyServed,
@@ -28,9 +35,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <audio id="audio" src={bell}></audio>
         <div className="randomizer">
           <span>Family Randomizer 3000</span>
-
           <button onClick={() => this.getRandom()} className="shuffle">
             Shuffle!
           </button>
